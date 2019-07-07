@@ -10,6 +10,10 @@
 	<div id="app">
 		<h1 v-text="greeting"></h1>
 		<input type="text" v-model="greeting">
+		
+		<div v-if="greeting == 'red'">Red</div>
+		<div v-else-if="greeting == 'green'">Green</div>
+		<div v-else>Blue</div>
 	</div>
 
 	<!-- development version, includes helpful console warnings -->
