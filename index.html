@@ -5,13 +5,22 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Vue</title>
 	<link rel="stylesheet" href="">
+	<style>
+		.red {
+			border-color: red;
+		}
+		.green {
+			border-color: green;
+		}
+	</style>
 </head>
 <body>
 	<div id="app">
 		<h1 v-text="greeting"></h1>
-		<input type="text" v-model="greeting">
+		<input type="text" v-model="greeting" :class="greeting.length < 3 ? 'red' : 'green' ">
 
-		<div v-show="greeting == 'Hi'">What's up?</div>
+<!-- 		<input type="submit" value="Sign Up" v-bind:disabled="greeting.length < 3" onClick="alert('Done')">
+ -->		<input type="submit" value="Sign Up" :disabled="greeting.length < 3" onClick="alert('Done')">
 	</div>
 
 	<!-- development version, includes helpful console warnings -->
