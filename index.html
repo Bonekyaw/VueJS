@@ -16,7 +16,7 @@
 </head>
 <body>
 	<div id="app">
-		<h1 v-text="greeting"></h1>
+		<p v-html="greeting"></p>
 		<input type="text" v-model="greeting" :class="greeting.length < 3 ? 'red' : 'green' ">
 
 <!-- 		<input type="submit" value="Sign Up" v-bind:disabled="greeting.length < 3" onClick="alert('Done')">
