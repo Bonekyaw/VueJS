@@ -5,23 +5,15 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Vue</title>
 	<link rel="stylesheet" href="">
-	<style>
-		.red {
-			border-color: red;
-		}
-		.green {
-			border-color: green;
-		}
-	</style>
 </head>
 <body>
 	<div id="app">
-		<p v-once>{{greeting}}</p>
-		<p >{{greeting}}</p>
-		<input type="text" v-model="greeting" :class="greeting.length < 3 ? 'red' : 'green' ">
+		<ul>
+			<li  v-for="item in items">{{item.name}} </li>
+		</ul>
+		<input type="text" v-model="name_input" @keyup.enter="addItem">
+		<button @click="addItem"> + ADD </button>
 
-<!-- 		<input type="submit" value="Sign Up" v-bind:disabled="greeting.length < 3" onClick="alert('Done')">
- -->		<input type="submit" value="Sign Up" :disabled="greeting.length < 3" onClick="alert('Done')">
 	</div>
 
 	<!-- development version, includes helpful console warnings -->
@@ -30,7 +22,19 @@
 		new Vue({
 			el:'#app',
 			data:{
-				greeting: "Welcome"
+				items: [
+					{name: "Bo Bo"},
+					{name: "Ko Ko"},
+					{name: "Po Po"},
+					{name: "Oo Oo"},
+				],
+				name_input : '',
+			},
+			methods : {
+				addItem : function(){
+					this.items.push({name : this.name_input})
+					this.name_input = ''
+				}
 			}
 		})
 	</script>
