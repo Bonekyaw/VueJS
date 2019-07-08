@@ -9,7 +9,7 @@
 <body>
 	<div id="app">
 		<ul>
-			<li  v-for="item in items">{{item.name}} </li>
+			<li  v-for="item in items">{{item.name | capitalize | addSir}} </li>
 		</ul>
 		<input type="text" v-model="name_input" @keyup.enter="addItem">
 		<button @click="addItem"> + ADD </button>
@@ -34,6 +34,14 @@
 				addItem : function(){
 					this.items.push({name : this.name_input})
 					this.name_input = ''
+				}
+			},
+			filters : {
+				capitalize : function(value){
+					return value.toUpperCase()
+				},
+				addSir : function(value){
+					return 'Sir ' + value
 				}
 			}
 		})
