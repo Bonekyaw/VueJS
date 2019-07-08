@@ -8,9 +8,8 @@
 </head>
 <body>
 	<div id="app">
-		<p>{{computedValue}}</p>
 		<ul>
-			<li  v-for="item in items">{{item.name | capitalize | addSir}} </li>
+			<li  v-for="item in items">{{item.name }} </li>
 		</ul>
 		<input type="text" v-model="name_input" @keyup.enter="addItem">
 		<button @click="addItem"> + ADD </button>
@@ -49,14 +48,23 @@
 					this.name_input = ''
 				}
 			},
-			computed : {
-				computedValue : function(){
-					if (this.name_input.length > 0) {
-						return 'Sir ' + this.name_input
-					}
-				}
-			}
+			created : function(){
+				console.log('Created')
+			},
+			mounted : function(){
+				console.log('mounted')
+			},
+			updated : function(){
+				console.log('Updated')
+			},
+			destroyed : function(){
+				console.log('destroyed')
+			},
+
 		})
+		setTimeout(function(){
+			app.$destroy()
+		}, 5000)
 	</script>
 </body>
 </html>
