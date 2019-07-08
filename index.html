@@ -14,17 +14,18 @@
 		</ul>
 		<input type="text" v-model="name_input" @keyup.enter="addItem">
 		<button @click="addItem"> + ADD </button>
-		<new-com />
+		<new-com :items="items"/>
 
 	</div>
 
 	<!-- development version, includes helpful console warnings -->
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<script>
-		Vue.component('new-com',{
-			template : //notice ``
+		Vue.component('new-com',{				//notice ``
+			props : ['items'],					//receive data
+			template : 
 				`<ul>				 
-						<li>New Component</li>
+						<li v-for="item in items">{{item.name}}</li>
 				 </ul>`
 			
 		})
